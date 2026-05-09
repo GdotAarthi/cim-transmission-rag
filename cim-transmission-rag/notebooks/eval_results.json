@@ -1,0 +1,7 @@
+{
+  "k": 5,
+  "n_eval_cases": 5,
+  "hit_rate_at_k": 1.0,
+  "mean_reciprocal_rank": 0.7333,
+  "mean_faithfulness": 0.9
+}

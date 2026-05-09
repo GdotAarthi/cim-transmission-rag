@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#"
+  xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#"
+  xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#">
+
+  <!-- Substations -->
+  <cim:Substation rdf:ID="SUB_001">
+    <cim:IdentifiedObject.name>Piedmont Transmission - Charlotte North Substation</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>138kV/345kV transmission substation serving Charlotte metro area</cim:IdentifiedObject.description>
+    <cim:Substation.Region rdf:resource="#REGION_CAROLINAS"/>
+    <cim:PowerSystemResource.Location rdf:resource="#LOC_SUB_001"/>
+  </cim:Substation>
+
+  <cim:Substation rdf:ID="SUB_002">
+    <cim:IdentifiedObject.name>Piedmont Transmission - Gastonia Substation</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>138kV transmission substation, western Piedmont region</cim:IdentifiedObject.description>
+    <cim:Substation.Region rdf:resource="#REGION_CAROLINAS"/>
+    <cim:PowerSystemResource.Location rdf:resource="#LOC_SUB_002"/>
+  </cim:Substation>
+
+  <!-- Voltage Levels -->
+  <cim:VoltageLevel rdf:ID="VL_SUB001_138">
+    <cim:IdentifiedObject.name>SUB_001 138kV Bus</cim:IdentifiedObject.name>
+    <cim:VoltageLevel.Substation rdf:resource="#SUB_001"/>
+    <cim:VoltageLevel.BaseVoltage rdf:resource="#BV_138KV"/>
+  </cim:VoltageLevel>
+
+  <cim:VoltageLevel rdf:ID="VL_SUB001_345">
+    <cim:IdentifiedObject.name>SUB_001 345kV Bus</cim:IdentifiedObject.name>
+    <cim:VoltageLevel.Substation rdf:resource="#SUB_001"/>
+    <cim:VoltageLevel.BaseVoltage rdf:resource="#BV_345KV"/>
+  </cim:VoltageLevel>
+
+  <!-- Base Voltages -->
+  <cim:BaseVoltage rdf:ID="BV_138KV">
+    <cim:IdentifiedObject.name>138kV</cim:IdentifiedObject.name>
+    <cim:BaseVoltage.nominalVoltage>138</cim:BaseVoltage.nominalVoltage>
+  </cim:BaseVoltage>
+
+  <cim:BaseVoltage rdf:ID="BV_345KV">
+    <cim:IdentifiedObject.name>345kV</cim:IdentifiedObject.name>
+    <cim:BaseVoltage.nominalVoltage>345</cim:BaseVoltage.nominalVoltage>
+  </cim:BaseVoltage>
+
+  <!-- AC Line Segments (Transmission Lines) -->
+  <cim:ACLineSegment rdf:ID="LINE_001">
+    <cim:IdentifiedObject.name>Charlotte-Gastonia 138kV Line</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>138kV double-circuit overhead transmission line, 42.3 miles, ACSR Drake conductor</cim:IdentifiedObject.description>
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="#BV_138KV"/>
+    <cim:Conductor.length>68.1</cim:Conductor.length>
+    <cim:ACLineSegment.r>0.0451</cim:ACLineSegment.r>
+    <cim:ACLineSegment.x>0.3853</cim:ACLineSegment.x>
+    <cim:ACLineSegment.bch>0.00382</cim:ACLineSegment.bch>
+    <cim:ACLineSegment.r0>0.1353</cim:ACLineSegment.r0>
+    <cim:ACLineSegment.x0>1.1559</cim:ACLineSegment.x0>
+  </cim:ACLineSegment>
+
+  <cim:ACLineSegment rdf:ID="LINE_002">
+    <cim:IdentifiedObject.name>Charlotte North-South 345kV Tie</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>345kV EHV interconnect, 28.7 miles, bundled ACSR 2x Drake, critical N-1 path</cim:IdentifiedObject.description>
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="#BV_345KV"/>
+    <cim:Conductor.length>46.2</cim:Conductor.length>
+    <cim:ACLineSegment.r>0.0201</cim:ACLineSegment.r>
+    <cim:ACLineSegment.x>0.1987</cim:ACLineSegment.x>
+    <cim:ACLineSegment.bch>0.00891</cim:ACLineSegment.bch>
+    <cim:ACLineSegment.r0>0.0603</cim:ACLineSegment.r0>
+    <cim:ACLineSegment.x0>0.5961</cim:ACLineSegment.x0>
+  </cim:ACLineSegment>
+
+  <!-- Power Transformers -->
+  <cim:PowerTransformer rdf:ID="XFMR_SUB001_1">
+    <cim:IdentifiedObject.name>SUB_001 Auto-Transformer T1</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>345/138kV 600MVA autotransformer, LTC control, delta-wye grounded</cim:IdentifiedObject.description>
+    <cim:Equipment.EquipmentContainer rdf:resource="#SUB_001"/>
+    <cim:PowerTransformer.isPartOfGeneratorUnit>false</cim:PowerTransformer.isPartOfGeneratorUnit>
+  </cim:PowerTransformer>
+
+  <cim:PowerTransformerEnd rdf:ID="XFMR_SUB001_1_END1">
+    <cim:IdentifiedObject.name>SUB_001 T1 HV End</cim:IdentifiedObject.name>
+    <cim:PowerTransformerEnd.PowerTransformer rdf:resource="#XFMR_SUB001_1"/>
+    <cim:PowerTransformerEnd.ratedU>345</cim:PowerTransformerEnd.ratedU>
+    <cim:PowerTransformerEnd.ratedS>600</cim:PowerTransformerEnd.ratedS>
+    <cim:PowerTransformerEnd.r>0.0</cim:PowerTransformerEnd.r>
+    <cim:PowerTransformerEnd.x>0.1234</cim:PowerTransformerEnd.x>
+    <cim:PowerTransformerEnd.connectionKind>Yn</cim:PowerTransformerEnd.connectionKind>
+    <cim:PowerTransformerEnd.endNumber>1</cim:PowerTransformerEnd.endNumber>
+  </cim:PowerTransformerEnd>
+
+  <cim:PowerTransformerEnd rdf:ID="XFMR_SUB001_1_END2">
+    <cim:IdentifiedObject.name>SUB_001 T1 LV End</cim:IdentifiedObject.name>
+    <cim:PowerTransformerEnd.PowerTransformer rdf:resource="#XFMR_SUB001_1"/>
+    <cim:PowerTransformerEnd.ratedU>138</cim:PowerTransformerEnd.ratedU>
+    <cim:PowerTransformerEnd.ratedS>600</cim:PowerTransformerEnd.ratedS>
+    <cim:PowerTransformerEnd.r>0.0</cim:PowerTransformerEnd.r>
+    <cim:PowerTransformerEnd.x>0.0309</cim:PowerTransformerEnd.x>
+    <cim:PowerTransformerEnd.connectionKind>Yn</cim:PowerTransformerEnd.connectionKind>
+    <cim:PowerTransformerEnd.endNumber>2</cim:PowerTransformerEnd.endNumber>
+  </cim:PowerTransformerEnd>
+
+  <!-- Breakers / Switches -->
+  <cim:Breaker rdf:ID="BRK_LINE001_SUB001">
+    <cim:IdentifiedObject.name>SUB_001 Line 001 Breaker</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>SF6 138kV breaker, 2000A rated, 40kA interrupting, 3-pole</cim:IdentifiedObject.description>
+    <cim:Switch.normalOpen>false</cim:Switch.normalOpen>
+    <cim:Switch.ratedCurrent>2000</cim:Switch.ratedCurrent>
+    <cim:Equipment.EquipmentContainer rdf:resource="#VL_SUB001_138"/>
+  </cim:Breaker>
+
+  <!-- Busbars -->
+  <cim:BusbarSection rdf:ID="BUS_SUB001_138_A">
+    <cim:IdentifiedObject.name>SUB_001 138kV Bus A</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>Main 138kV busbar, double-bus double-breaker configuration</cim:IdentifiedObject.description>
+    <cim:Equipment.EquipmentContainer rdf:resource="#VL_SUB001_138"/>
+    <cim:BusbarSection.ipMax>40</cim:BusbarSection.ipMax>
+  </cim:BusbarSection>
+
+  <!-- Shunt Compensators -->
+  <cim:LinearShuntCompensator rdf:ID="CAP_SUB001_1">
+    <cim:IdentifiedObject.name>SUB_001 138kV Capacitor Bank 1</cim:IdentifiedObject.name>
+    <cim:IdentifiedObject.description>50MVAR fixed shunt capacitor bank for voltage support</cim:IdentifiedObject.description>
+    <cim:Equipment.EquipmentContainer rdf:resource="#VL_SUB001_138"/>
+    <cim:ShuntCompensator.nomU>138</cim:ShuntCompensator.nomU>
+    <cim:LinearShuntCompensator.bPerSection>0.002625</cim:LinearShuntCompensator.bPerSection>
+    <cim:ShuntCompensator.maximumSections>1</cim:ShuntCompensator.maximumSections>
+    <cim:ShuntCompensator.normalSections>1</cim:ShuntCompensator.normalSections>
+  </cim:LinearShuntCompensator>
+
+  <!-- Connectivity Nodes / Terminals -->
+  <cim:ConnectivityNode rdf:ID="CN_SUB001_138A">
+    <cim:IdentifiedObject.name>SUB_001 138kV Bus A Node</cim:IdentifiedObject.name>
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="#VL_SUB001_138"/>
+  </cim:ConnectivityNode>
+
+  <cim:Terminal rdf:ID="TERM_LINE001_T1">
+    <cim:IdentifiedObject.name>Line 001 Terminal 1</cim:IdentifiedObject.name>
+    <cim:Terminal.ConductingEquipment rdf:resource="#LINE_001"/>
+    <cim:Terminal.ConnectivityNode rdf:resource="#CN_SUB001_138A"/>
+    <cim:ACDCTerminal.sequenceNumber>1</cim:ACDCTerminal.sequenceNumber>
+  </cim:Terminal>
+
+  <!-- Geographic Region -->
+  <cim:GeographicalRegion rdf:ID="REGION_CAROLINAS">
+    <cim:IdentifiedObject.name>Carolinas Region</cim:IdentifiedObject.name>
+  </cim:GeographicalRegion>
+
+</rdf:RDF>
